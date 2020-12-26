@@ -1,8 +1,12 @@
 import React from "react";
+//import "./App.scss";
+import { Login, Register } from "./login";
 
 function App() {
   return (
-    <h1>How You Doin'?</h1>
+    <div className="App">
+      <Login/>
+    </div>
   );
 }
 
