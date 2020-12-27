@@ -1,6 +1,7 @@
 require('dotenv').config()
+require('./config/db')
+require('./config/nodeMailer')
 
-const mongoose = require('mongoose');
 const cors = require("cors");
 const createError = require('http-errors');
 const express = require('express');
@@ -13,20 +14,6 @@ const app = express();
 //My routes
 const authRoutes = require("./routes/auth");
 
-//DB Connection
-mongoose
-  .connect(process.env.MONGO_URL, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useCreateIndex: true
-  })
-  .then(() => {
-    console.log("DB CONNECTED");
-  })
-  .catch(() => {
-    console.error("DB connection failed");
-  })
-
 // view engine setup
 app.set('views', path.join(__dirname, '../views'));
 app.set('view engine', 'jade');
@@ -37,7 +24,7 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, '../public')));
 
 //My Routes
 app.use("/api", authRoutes);

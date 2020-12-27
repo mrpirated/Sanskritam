@@ -1,5 +1,7 @@
 const User = require("../models/user");
-const { check, validationResult } = require("express-validator");
+const { validationResult } = require("express-validator");
+var { emailVerification } = require('../config/mailTemplate');
+var crypto = require('crypto')
 var jwt = require("jsonwebtoken");
 
 exports.signup = (req, res) => {
@@ -19,19 +21,22 @@ exports.signup = (req, res) => {
       })
   })
 
-  const user = new User(req.body);
-  user.save((err, user) => {
-    if (err) {
-      console.log(err)
-      return res.status(400).json({
-        err: "NOT able to save user in DB"
-      });
-    }
-    res.json({
-      id: user._id,
-      success: true
-    });
+  const newUser = new User({
+    name: req.body.name,
+    email: req.body.email,
+    password: req.body.password,
+    verifyToken: crypto.randomBytes(30).toString('hex')
   });
+
+  newUser.save()
+  .then((user) => {
+    emailVerification(user.email, user.name, `http://localhost:3000/auth/verify/${user.verifyToken}`)
+  })
+  .catch((err) => {
+    return res.status(500).json({err: err, success: false})
+  })
+
+  return res.status(200).json({msg: "Signup Success!! Verify Mail!", success: true})
 };
 
 exports.signin = (req, res) => {
@@ -73,24 +78,4 @@ exports.signout = (req, res) => {
   res.json({
     message: "User signout successfully"
   });
-};
-
-//custom middlewares
-exports.isAuthenticated = (req, res, next) => {
-  let checker = req.profile && req.auth && req.profile._id == req.auth._id;
-  if (!checker) {
-    return res.status(403).json({
-      error: "ACCESS DENIED"
-    });
-  }
-  next();
-};
-
-exports.isAdmin = (req, res, next) => {
-  if (req.profile.role === 0) {
-    return res.status(403).json({
-      error: "You are not ADMIN, Access denied"
-    });
-  }
-  next();
 };
