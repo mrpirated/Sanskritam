@@ -6,7 +6,6 @@ import {
   Route,
   Link
 } from "react-router-dom";
-import { Register } from "./register";
 
 
 export function Login() {
@@ -22,7 +21,7 @@ export function Login() {
     }
 
     return (
-        <div>
+        //<div>
             <div className={containerClass} id="container">
                 <div className="form-container sign-up-container">
                     <form action="#">
@@ -69,6 +68,6 @@ export function Login() {
                     </div>
                 </div>
             </div>
-        </div> 
+        //</div> 
     );
 };
