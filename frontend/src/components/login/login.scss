@@ -6,7 +6,11 @@
 
 body {
   font-family: "Montserrat", sans-serif;
-  background: #9cba7f;
+  //background: #9cba7f;
+  background-image: url("./image/bgimage2.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 100% 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -88,8 +92,8 @@ a {
 
 button {
   border-radius: 20px;
-  border: 1px solid #4a7023;
-  background: #4a7023;
+  border: 1px solid #4cbb17;
+  background: #4cbb17;
   color: #fff;
   font-size: 12px;
   font-weight: bold;
@@ -145,7 +149,7 @@ button.ghost {
 
 .overlay {
   background: #458b00;
-  background: linear-gradient(to right, #4a7023, #458b00) no-repeat 0 0 / cover;
+  background: linear-gradient(to right, #4cbb17, #458b00) no-repeat 0 0 / cover;
   color: #fff;
   position: relative;
   left: -100%;
