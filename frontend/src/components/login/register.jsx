@@ -1,5 +1,12 @@
 import React from "react";
 import "./login.scss";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
+import { Login } from "./login";
 
 export function Register() {
     return (
@@ -33,14 +40,16 @@ export function Register() {
                         >
                                 Already have an account? 
                         </label>
-                        <div>
-                            <a
-                                href="#"
-                                style={{ fontWeight: "500", fontSize: "17px", textAlign:"center"}}
-                            >
-                                Sign In 
-                            </a>
-                        </div>
+                        <Router>
+                            <div>    
+                                <Link to="/login">Login</Link> 
+                                <Switch>
+                                <Route path="/login">
+                                    <Login />
+                                </Route>
+                                </Switch>
+                            </div>
+                        </Router>
                         </form>
                     </section>
                 </section>
