@@ -14,7 +14,7 @@ exports.signup = (req, res) => {
   }
 
   User.findOne({ email: req.body.email }, (err, user) => {
-    if(user)
+    if (user)
       return res.status(403).json({
         err: "Email Already Exists!!",
         success: false
@@ -69,7 +69,7 @@ exports.signin = (req, res) => {
 
     //send response to front end
     const { _id, name, email, role } = user;
-    return res.json({ token, user: { _id, name, email, role }, success:true});
+    return res.json({ token, user: { _id, name, email, role }, success: true });
   });
 };
 
