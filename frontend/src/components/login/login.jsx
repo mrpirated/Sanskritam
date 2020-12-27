@@ -1,14 +1,7 @@
 import React, {useState} from "react";
-//import "./login.scss";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
-} from "react-router-dom";
+import "./login.scss";
 
-
-export function Login() {
+export default function Login() {
      const containerClassInitial = "container";
     const [containerClass, setContainerClass] = useState(containerClassInitial);
 
