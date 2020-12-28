@@ -35,14 +35,23 @@ var userSchema = new mongoose.Schema(
       type: Boolean,
       default: false
     },
-    sentids:{
-      type:Array,
-      default: []
-    },
-    wordids:{
-      type:Array,
-      default:[]
-    }
+    // points: {
+    //   type: Int8Array,
+    //   default: 0,
+    // },
+    // daypoints:{
+    //   type: Int16Array,
+    //   default : 0,
+    // }
+
+    // sentids:{
+    //   type:Array,
+    //   default: []
+    // },
+    // wordids:{
+    //   type:Array,
+    //   default:[]
+    // }
   },
   { timestamps: true }
 );

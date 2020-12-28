@@ -1,5 +1,6 @@
-require('dotenv').config()
 const mongoose = require("mongoose");
+require('dotenv').config()
+
 mongoose.connect("mongodb+srv://dbuser:dbuser@cluster0.o8x9w.mongodb.net/DB?retryWrites=true&w=majority", {
     useNewUrlParser: true,
     useUnifiedTopology: true,
@@ -20,10 +21,9 @@ const wordSchema = new mongoose.Schema(
             required: true
 
         },
-        split:{
-            type: Array,
-            required: true
-        },
+        split:[{
+            type: String
+        }],
         hint: {
             type: String,
             required: true
@@ -32,4 +32,4 @@ const wordSchema = new mongoose.Schema(
     
 );
 
-module.exports = mongoose.model("Word Library",wordSchema);
+module.exports = mongoose.model("Word",wordSchema);
