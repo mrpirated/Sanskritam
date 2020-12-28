@@ -9,7 +9,7 @@ async function run() {
     const database = client.db("DB");
     const collection = database.collection("Library");
     // create a document to be inserted
-    const doc = { word: "संस्कृत", split: ["सं","स्कृ","त"] };
+    const doc = { word: "संसार", split: ["सं","सा","र"],hint:"cycle of worldly existence; worldly illusion" };
     const result = await collection.insertOne(doc);
     console.log(
       `${result.insertedCount} documents were inserted with the _id: ${result.insertedId}`,
