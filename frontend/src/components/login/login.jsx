@@ -1,15 +1,7 @@
 import React, {useState} from "react";
-//import "./login.scss";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
-} from "react-router-dom";
-import { Register } from "./register";
+import "./login.scss";
 
-
-export function Login() {
+export default function Login() {
      const containerClassInitial = "container";
     const [containerClass, setContainerClass] = useState(containerClassInitial);
 
@@ -22,7 +14,7 @@ export function Login() {
     }
 
     return (
-        <div>
+        //<div>
             <div className={containerClass} id="container">
                 <div className="form-container sign-up-container">
                     <form action="#">
@@ -69,6 +61,6 @@ export function Login() {
                     </div>
                 </div>
             </div>
-        </div> 
+        //</div> 
     );
 };
