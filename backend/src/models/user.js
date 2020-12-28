@@ -34,6 +34,14 @@ var userSchema = new mongoose.Schema(
     isVerified: {
       type: Boolean,
       default: false
+    },
+    sentids:{
+      type:Array,
+      default: []
+    },
+    wordids:{
+      type:Array,
+      default:[]
     }
   },
   { timestamps: true }
