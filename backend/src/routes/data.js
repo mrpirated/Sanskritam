@@ -37,7 +37,7 @@ function randomword(difficulty){
             //console.log(docs);
             size = docs.length;
             var index = Math.floor(rand*size);
-            word = docs[index];
+            word = new WordModel(docs[index]);
             console.log(word);
         })
     }
@@ -46,8 +46,9 @@ function randomword(difficulty){
         WordModel.find({ "split.4": { "$exists": false } }&&{ "split.2": { "$exists": true }}, function (err, docs) {
             size = docs.length;
             var index = Math.floor(rand*size);
-            word = docs[index];
+            word = new WordModel(docs[index]);
             console.log(word);
+
         })
     }
     else if (difficulty == 2) {
@@ -55,11 +56,11 @@ function randomword(difficulty){
         WordModel.find({ "split.4": { "$exists": true }}, function (err, docs) {
             size = docs.length;
             var index = Math.floor(rand*size);
-            word = docs[index];
+            word = new WordModel(docs[index]);
             console.log(word);
         })
     }
-
+    
     return word;
 
     
@@ -69,25 +70,37 @@ function randomword(difficulty){
 
 }
 function randomsentence(difficulty){
+    var size;
+    var sentence;
+    var rand = Math.random();
     if (difficulty == 0) {
 
         SentModel.find({ "split.2": { "$exists": false } }, function (err, docs) {
-            console.log(docs);
+            size = docs.length;
+            var index = Math.floor(rand*size);
+            sentence = new SentModel(docs[index]);
+            console.log(sentence);
         })
     }
     else if (difficulty == 1) {
 
         SentModel.find({ "split.4": { "$exists": false } }&&{ "split.2": { "$exists": true }}, function (err, docs) {
-            console.log(docs);
+            size = docs.length;
+            var index = Math.floor(rand*size);
+            sentence = new SentModel(docs[index]);
+            console.log(sentence);
         })
     }
     else if (difficulty == 2) {
 
         SentModel.find({ "split.4": { "$exists": true }}, function (err, docs) {
-            console.log(docs);
+            size = docs.length;
+            var index = Math.floor(rand*size);
+            sentence = new SentModel(docs[index]);
+            console.log(sentence);
         })
     }
+    return sentence;
 }
 word = randomword(0);
-console.log(word);
-//randomsentence(0);
+randomsentence(0);
