@@ -1,0 +1,19 @@
+.scorecard-container {
+    padding: 2mm;
+    background-color: #4C212A;
+    padding-bottom: 10mm;
+}
+
+.score-container {
+    float: left;
+    color: #FBF9FF;
+}
+
+.submit-container {
+    float: right;
+}
+
+.btn-outline-success {
+    background-color: #04724D;
+    color: #FBF9FF;
+}

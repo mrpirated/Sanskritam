@@ -1,0 +1,18 @@
+.btn-light {
+    width: 22mm;
+    height: 25mm;
+    font-size: 8mm;
+    background-color: #FBF9FF;
+    border: #FBF9FF solid 1px;
+}
+
+.btn-light:hover {
+    transform: scale(1.25);
+    background-color: #FBF9FF;
+    border: #FBF9FF solid 1px;
+}
+
+.container {
+    margin: 1mm;
+    padding: 1mm;
+}
