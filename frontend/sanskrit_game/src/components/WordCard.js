@@ -7,7 +7,7 @@ const WordCard = (props) => {
     
         return (
 
-            <div className="d-inline container">
+            <div className="d-inline container" id="word-container">
                 <button type="button" className="btn btn-light" onClick={()=>{ wordClick(props.letter) } }> {props.letter} </button>  {/*onClick={cardClick()*/}
             </div>
             
