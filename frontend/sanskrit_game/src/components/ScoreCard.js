@@ -18,18 +18,13 @@ const ScoreCard = (props) => {
 
                 <div className="submit-container">
                     {/* The submission of answer for validation */}
-                    <button type="button" className="btn btn-outline-success" onClick={ ()=> {SubmitClick()} }>Submit</button>
+                    <button type="button" className="btn btn-outline-success" onClick={ ()=> { props.submit_event() } }>Submit</button>
                 </div>
 
             </div>
             
         );
 
-}
-
-function SubmitClick() {
-    //Check Answer here
-    alert("Submit clicked!");  //Modify submit functionality here
 }
 
 

@@ -11,3 +11,7 @@
     background-color: #FBF9FF;
     border: #FBF9FF solid 1px;
 }
+
+.btn-light:focus {
+    background-color: #868784;
+}

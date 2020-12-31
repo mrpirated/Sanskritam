@@ -17,7 +17,7 @@
     border: #000501 solid 1px;
 }
 
-.btn-primary:visited {
+.btn-primary:focus {
     background-color: #000501;
     border: #000501 solid 1px;
 }

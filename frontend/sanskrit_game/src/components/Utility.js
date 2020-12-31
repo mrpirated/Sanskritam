@@ -10,16 +10,16 @@ const Utility = (props) => {
             <div className="utility-container">
                 
                 <div className="d-inline diff-container" >
-                    <button type="button" class="btn btn-warning" onClick={() => { DiffClick() }} >Difficulty</button>
+                    <button type="button" className="btn btn-warning" onClick={() => { DiffClick() }} >Difficulty</button>
                 </div>
 
                 <div className="btn-container">
                     <div className="d-inline hint-container" >
-                        <button type="button" class="btn btn-secondary" onClick={() => { HintClick() }} >Get Hint</button>
+                        <button type="button" className="btn btn-secondary" onClick={() => { HintClick() }} >Get Hint</button>
                     </div>
 
                     <div className="d-inline soln-container">
-                        <button type="button" class="btn btn-danger" onClick={() => { SolutionClick() }}>Solution</button>
+                        <button type="button" className="btn btn-danger" onClick={() => { SolutionClick() }}>Solution</button>
                     </div>
                 </div>    
 
