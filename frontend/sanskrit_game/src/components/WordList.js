@@ -9,7 +9,8 @@ class WordList extends Component  {
         //Dynamic list of words on display
         return (
             <div className="word-container">
-                {
+                <div className="positioning-container">
+                {                    
                     this.props.letterList.map((letters, i) => {
                         /*Allows for dynamic number of choices*/
                         return (
@@ -21,6 +22,7 @@ class WordList extends Component  {
                         );
                     })
                 }
+                </div>
             </div>
         );
     }
