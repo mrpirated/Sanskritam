@@ -24,7 +24,8 @@ class GameApp extends Component {
 
             //UI related
             selection: false,
-            active_index: -1
+            active_index: -1,
+            showModal: false
         }
     }
 

@@ -9,6 +9,7 @@ class ChoiceList extends Component {
         //Dynamic list of choices
         return (
             <div className="choice-container">
+                <div className="positioning-container">
                 {
                     this.props.letterList.map((letters, i) => {
                         /*Allows for dynamic number of choices*/
@@ -20,6 +21,7 @@ class ChoiceList extends Component {
                         );
                     })
                 }
+                </div>
             </div>
         );
     }
