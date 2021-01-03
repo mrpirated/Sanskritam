@@ -1,0 +1,11 @@
+.choice-container {
+    padding: 5mm;
+    background-color: #7C9EB2;
+    
+    width: 100%;
+    padding-bottom: 5mm;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
