@@ -13,11 +13,9 @@ const app = express();
 
 //My routes
 const authRoutes = require("./routes/auth");
-const wordsRoutes = require("./routes/data");
+const dataRoutes = require("./routes/data");
+const rankRoutes = require("./routes/leaderboard");
 
-// view engine setup
-//app.set('views', path.join(__dirname, '../views'));
-//app.set('view engine', 'ejs');
 
 //Middlewares
 app.use(logger('dev'));
@@ -29,7 +27,8 @@ app.use(express.static(path.join(__dirname, '../public')));
 
 //My Routes
 app.use("/", authRoutes);
-app.use("/game",wordsRoutes);
+app.use("/game", dataRoutes);
+app.use("/leaderboard", rankRoutes);
 
 // catch 404 and forward to error handler
 // app.use(function(req, res, next) {

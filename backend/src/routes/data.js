@@ -87,14 +87,5 @@ router.get("/getsentence/hard", async (req, res) => {
         .catch(err => status(400).json('Error: ' + err))
 })
 
-router.get("/leaderboard", async (req, res) => {
-    var mysort = { points: 1 };
-    User.find({})
-        .then(docs => {
-            res.json(docs.sort(mysort))
-        })
-        .catch(err => status(400).json('Error: ' + err))
-})
-
 
 module.exports = router;
