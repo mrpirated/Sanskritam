@@ -1,4 +1,5 @@
-import React, { Component } from 'react';
+import React  from 'react';
+import { Component } from 'react';
 
 import ChoiceList from './components/ChoiceList';
 import WordList from './components/WordList';
@@ -64,6 +65,7 @@ class GameApp extends Component {
             alert("Wrong answer");
         }
     }
+
 
     render() {
 
