@@ -7,7 +7,7 @@
 body {
   font-family: "Montserrat", sans-serif;
   //background: #9cba7f;
-  background-image: url("./image/bgimage2.jpg");
+  //background-image: url("./image/swastik.jpg");
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: 100% 100%;
@@ -21,8 +21,8 @@ body {
 
 button {
   border-radius: 20px;
-  border: 1px solid #4cbb17;
-  background: #4cbb17;
+  border: 1px solid #e9880a;
+  background: #e9880a;
   color: #fff;
   font-size: 12px;
   font-weight: bold;
@@ -85,7 +85,7 @@ button.ghost {
 }
 
 .container {
-  background-color: #cfdbc5;
+  background-color: #ffffff;
   border-radius: 10px;
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
   position: relative;
@@ -152,8 +152,8 @@ button.ghost {
 }
 
 .overlay {
-  background: #458b00;
-  background: linear-gradient(to right, #4cbb17, #458b00) no-repeat 0 0 / cover;
+  background: #e9880a;
+  background: linear-gradient(to right, #e9880a, #e9880a) no-repeat 0 0 / cover;
   color: #fff;
   position: relative;
   //left: -100%;
@@ -230,8 +230,8 @@ button.ghost {
   }
 
   .overlay {
-    background: #458b00;
-    background: linear-gradient(to right, #4cbb17, #458b00) no-repeat 0 0 /
+    background: #e9880a;
+    background: linear-gradient(to right, #e9880a, #e9880a) no-repeat 0 0 /
       cover;
     color: #fff;
     position: relative;
