@@ -1,7 +1,8 @@
 export const word_data = [
     {
         word: 'संस्कृत',
-        letters: ['सं', 'स्कृ', 'त']
+        split: ['सं', 'स्कृ', 'त'],
+        hint: 'Ancient language'
     },
 
 ];

@@ -4,6 +4,7 @@ import ChoiceList from './components/ChoiceList';
 import WordList from './components/WordList';
 import ScoreCard from './components/ScoreCard';
 import Utility from './components/Utility';
+import SubmitModal from './components/SubmitModal';
 import { choices_data } from './data/choices_data';
 import { word_data } from './data/word_data';
 
@@ -14,7 +15,7 @@ class GameApp extends Component {
 
         this.state = {
             //User-related
-            score: 8000,
+            score: 0,
             difficulty: 'easy',
 
             //Game-related
@@ -25,7 +26,7 @@ class GameApp extends Component {
             //UI related
             selection: false,
             active_index: -1,
-            showModal: false
+            showSubmitModal: false
         }
     }
 
@@ -57,18 +58,28 @@ class GameApp extends Component {
 
     onSubmit = (event) => {
         //Word compared to original answer
-        if(JSON.stringify(this.state.word_blank)===JSON.stringify(this.state.word_info.letters)) {
-            alert("Correct answer");
+        if(JSON.stringify(this.state.word_blank)===JSON.stringify(this.state.word_info.split)) {
+            this.setState({
+                showSubmitModal: true
+            })
         }
         else {
             alert("Wrong answer");
         }
     }
 
+    //Goes to next word
+    goNext = () => {
+        this.setState({
+            showSubmitModal: false
+        })
+    }
+
     render() {
 
         return(
             <div id="game-container" >
+                <SubmitModal view={this.state.showSubmitModal} info={this.state.word_info} close={this.goNext}/>
                 <Utility />
                 <ScoreCard currentScore={this.state.score} submit_event={this.onSubmit} />
                 <WordList letterList={this.state.word_blank} selection_event={this.onWordSelect} />       

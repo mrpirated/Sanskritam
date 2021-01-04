@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+//import ReactDOM from 'react-dom';
 
 const MODAL_STYLE = {
     position: 'fixed',
@@ -21,30 +21,30 @@ const OVERLAY_STYLE = {
     zIndex: 1000
 }
 
-const HintModal = (props) => {
-    if(!props.open) {
+const SubmitModal = (props) => {
+    if(!props.view) {
         return null;
     }
     else {
-        return ReactDOM.createPortal(
+        return (
 
             <>
             <div style={OVERLAY_STYLE} />
                 <div style={MODAL_STYLE}>
                     <div className="modal-header">
-                        <h5 className="modal-title">Hint</h5>
+                        <h5 className="modal-title">Right Answer</h5>
                     </div>
                     <div className="modal-body">
-                        <p>{props.body}</p>
+                        <p>{props.info.word}</p>
+                        <p>{props.info.hint}</p>
                     </div>
                     <div className="modal-footer">
-                        <button type="button" className="btn btn-dark" data-bs-dismiss="modal" onClick={props.close}>Close</button>
+                        <button type="button" className="btn btn-dark" data-bs-dismiss="modal" onClick={props.close}>Next</button>
                     </div>
                 </div>
-            </>,
-            document.getElementById('portal')
+            </>
         );
     }
 }
 
-export default HintModal;
+export default SubmitModal;
