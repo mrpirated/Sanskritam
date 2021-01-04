@@ -1,6 +1,7 @@
 .utility-container {
     background-color: #5EF38C;
     padding: 2mm;
+    border-radius: 15px 15px 0px 0px;
 }
 
 .hint-container {
