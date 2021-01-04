@@ -19,7 +19,7 @@ body {
   margin: 20px 0 20px;
 }
 
-button {
+.login-btns {
   border-radius: 20px;
   border: 1px solid #e9880a;
   background: #e9880a;
@@ -56,15 +56,15 @@ a {
   margin: 15px 0;
 }
 
-button:active {
+.login-btns:active {
   transform: scale(0.95);
 }
 
-button:focus {
+.login-btns:focus {
   outline: none;
 }
 
-button.ghost {
+.login-btns.ghost {
   background: transparent;
   border-color: #fff;
 }

@@ -68,11 +68,11 @@ class GameApp extends Component {
     render() {
 
         return(
-            <div className="container" >
+            <div className="game-container" >
                 <Utility />
                 <ScoreCard currentScore={this.state.score} submit_event={this.onSubmit} />
-                 <WordList letterList={this.state.word_blank} selection_event={this.onWordSelect} />       
-                <ChoiceList letterList={this.state.choices} selection_event={this.onChoiceSelect} />      
+                {/* <WordList letterList={this.state.word_blank} selection_event={this.onWordSelect} />   */}    
+                {/* <ChoiceList letterList={this.state.choices} selection_event={this.onChoiceSelect} />  */}   
             </div>
         );
 

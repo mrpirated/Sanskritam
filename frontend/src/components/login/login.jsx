@@ -28,7 +28,7 @@ export default function Login() {
                         <input type="text" placeholder="Name" />
                         <input type="email" placeholder="Email" />
                         <input type="password" placeholder="Password" />
-                        <button>Sign Up</button>
+                        <button className="login-btns">Sign Up</button>
                     </form>
                 </div>
                 <div className="form-container sign-in-container">
@@ -43,7 +43,7 @@ export default function Login() {
                         <input type="email" placeholder="Email" />
                         <input type="password" placeholder="Password" />
                         <a href="#">Forgot your password?</a>
-                        <button>Sign In</button>
+                        <button className="login-btns">Sign In</button>
                     </form>
                 </div>
                 <div className="overlay-container">
@@ -51,12 +51,12 @@ export default function Login() {
                         <div className="overlay-panel overlay-left">
                             <h1>Welcome Back!</h1>
                             <p>To keep connected with us please login with your personal info</p>
-                            <button className="ghost" id="signIn" onClick={signInClick}>Sign In</button>
+                            <button className=" login-btns ghost" id="signIn" onClick={signInClick}>Sign In</button>
                         </div>
                         <div className="overlay-panel overlay-right">
                             <h1>Welcome to Sanskritam</h1>
                             <p>Enter your personal details and start journey with us</p>
-                            <button className="ghost" id="signUp" onClick={signUpClick}>Sign Up</button>
+                            <button className="login-btns ghost" id="signUp" onClick={signUpClick}>Sign Up</button>
                         </div>
                     </div>
                 </div>
