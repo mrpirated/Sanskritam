@@ -6,7 +6,7 @@ import ScoreCard from './components/ScoreCard';
 import Utility from './components/Utility';
 import { choices_data } from './data/choices_data';
 import { word_data } from './data/word_data';
-
+import "./styles/GameApp.scss"
 class GameApp extends Component {
 
     constructor() {
@@ -68,7 +68,7 @@ class GameApp extends Component {
     render() {
 
         return(
-            <div >
+            <div className="container">
                 <Utility />
                 <ScoreCard currentScore={this.state.score} submit_event={this.onSubmit} />
                 {/* <WordList letterList={this.state.word_blank} selection_event={this.onWordSelect} />       */}
