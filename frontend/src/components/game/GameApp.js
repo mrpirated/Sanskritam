@@ -21,7 +21,6 @@ class GameApp extends Component {
             score: 0,
             difficulty: 'easy',
 
-
             //Game-related
             word_blank: [' ', ' ', ' '],     //letters to display
             choices: choices_data,            //choices for display
@@ -152,7 +151,7 @@ class GameApp extends Component {
         return (
             <div id="game-container" >
                 <SubmitModal view={this.state.showSubmitModal} info={this.state.word_info} close={this.goNext}/>
-                <Utility />
+                <Utility word={this.state.word_info} />
                 <ScoreCard currentScore={this.state.score} submit_event={this.onSubmit} />
                 <WordList letterList={this.state.word_blank} selection_event={this.onWordSelect} />
                 <ChoiceList letterList={this.state.choices} selection_event={this.onChoiceSelect} />
