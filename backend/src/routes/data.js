@@ -24,7 +24,7 @@ router.get("/getword/easy", async (req, res) => {
 
 router.get("/getword/medium", async (req, res) => {
     var rand = Math.random();
-    WordModel.find({ "split.4": { "$exists": false } } && { "split.2": { "$exists": true } })
+    WordModel.find({ "split.3": { "$exists": false } } && { "split.2": { "$exists": true } })
         .then(docs => {
             size = docs.length;
             var index = Math.floor(rand * size);
@@ -37,7 +37,7 @@ router.get("/getword/medium", async (req, res) => {
 
 router.get("/getword/hard", async (req, res) => {
     var rand = Math.random();
-    WordModel.find({ "split.4": { "$exists": true } })
+    WordModel.find({ "split.3": { "$exists": true } })
         .then(docs => {
             size = docs.length;
             var index = Math.floor(rand * size);
