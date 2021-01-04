@@ -1,106 +1,91 @@
 //require('dotenv').config()
-//require('./config/db')
+require('../config/db')
+
 const express = require("express");
 const router = express.Router();
-const WordModel = require("../models/words.js") 
-const SentModel = require("../models/sentence.js") 
+const WordModel = require("../models/words.js")
+const SentModel = require("../models/sentence.js")
 const User = require("../models/user.js")
-function randomword(difficulty){
-    
-    var size;
-    var word;
+
+
+
+router.get("/getword/easy", async (req, res) => {
     var rand = Math.random();
-    // const newWord = new WordModel({
-    //     word:"त्वम्",
-    //     split: ["त्व","म्"],
-    //     hint:"Myself"
-    // })
-    // newWord.save()
-
-    // const newSent = new SentModel({
-    //     sentence:"अहं वदामि",
-    //     split:["अहं","वदामि"],
-    //     meaning:"I say"
-    // })
-    // newSent.save()
- 
-    // WordModel.find(function(err, Library) {
-    //     if (err) {
-    //         console.log(err);
-    //     } else {
-    //         console.log(Library);
-    //     }
-    // });
-    if (difficulty == 0) {
-
-        WordModel.find({ "split.2": { "$exists": false } }, function (err, docs) {
-            //console.log(docs);
+    WordModel.find({ "split.2": { "$exists": false } })
+        .then(docs => {
             size = docs.length;
-            var index = Math.floor(rand*size);
+            var index = Math.floor(rand * size);
             word = new WordModel(docs[index]);
             console.log(word);
+            res.json(word)
         })
-    }
-    else if (difficulty == 1) {
+        .catch(err => status(400).json('Error: ' + err))
+})
 
-        WordModel.find({ "split.4": { "$exists": false } }&&{ "split.2": { "$exists": true }}, function (err, docs) {
-            size = docs.length;
-            var index = Math.floor(rand*size);
-            word = new WordModel(docs[index]);
-            console.log(word);
-
-        })
-    }
-    else if (difficulty == 2) {
-
-        WordModel.find({ "split.4": { "$exists": true }}, function (err, docs) {
-            size = docs.length;
-            var index = Math.floor(rand*size);
-            word = new WordModel(docs[index]);
-            console.log(word);
-        })
-    }
-    
-    return word;
-
-    
-    
-   
-    
-
-}
-function randomsentence(difficulty){
-    var size;
-    var sentence;
+router.get("/getword/medium", async (req, res) => {
     var rand = Math.random();
-    if (difficulty == 0) {
-
-        SentModel.find({ "split.2": { "$exists": false } }, function (err, docs) {
+    WordModel.find({ "split.4": { "$exists": false } } && { "split.2": { "$exists": true } })
+        .then(docs => {
             size = docs.length;
-            var index = Math.floor(rand*size);
-            sentence = new SentModel(docs[index]);
-            console.log(sentence);
+            var index = Math.floor(rand * size);
+            word = new WordModel(docs[index]);
+            console.log(word);
+            res.json(word)
         })
-    }
-    else if (difficulty == 1) {
+        .catch(err => status(400).json('Error: ' + err))
+})
 
-        SentModel.find({ "split.4": { "$exists": false } }&&{ "split.2": { "$exists": true }}, function (err, docs) {
+router.get("/getword/hard", async (req, res) => {
+    var rand = Math.random();
+    WordModel.find({ "split.4": { "$exists": true } })
+        .then(docs => {
             size = docs.length;
-            var index = Math.floor(rand*size);
-            sentence = new SentModel(docs[index]);
-            console.log(sentence);
+            var index = Math.floor(rand * size);
+            word = new WordModel(docs[index]);
+            console.log(word);
+            res.json(word)
         })
-    }
-    else if (difficulty == 2) {
+        .catch(err => status(400).json('Error: ' + err))
+})
 
-        SentModel.find({ "split.4": { "$exists": true }}, function (err, docs) {
+router.get("/getsentence/easy", async (req, res) => {
+    var rand = Math.random();
+    SentModel.find({ "split.2": { "$exists": false } })
+        .then(docs => {
             size = docs.length;
-            var index = Math.floor(rand*size);
-            sentence = new SentModel(docs[index]);
-            console.log(sentence);
+            var index = Math.floor(rand * size);
+            sent = new SentModel(docs[index]);
+            console.log(sent);
+            res.json(sent)
         })
-    }
-    return sentence;
-}
-word = randomword(0);
-randomsentence(0);
+        .catch(err => status(400).json('Error: ' + err))
+})
+
+router.get("/getsentence/medium", async (req, res) => {
+    var rand = Math.random();
+    SentModel.find({ "split.4": { "$exists": false } } && { "split.2": { "$exists": true } })
+        .then(docs => {
+            size = docs.length;
+            var index = Math.floor(rand * size);
+            sent = new SentModel(docs[index]);
+            console.log(sent);
+            res.json(sent)
+        })
+        .catch(err => status(400).json('Error: ' + err))
+})
+
+router.get("/getsentence/hard", async (req, res) => {
+    var rand = Math.random();
+    SentModel.find({ "split.4": { "$exists": true } })
+        .then(docs => {
+            size = docs.length;
+            var index = Math.floor(rand * size);
+            sent = new SentModel(docs[index]);
+            console.log(sent);
+            res.json(sent)
+        })
+        .catch(err => status(400).json('Error: ' + err))
+})
+
+
+module.exports = router;
