@@ -1,4 +1,5 @@
-import React, { Component } from 'react';
+import React  from 'react';
+import { Component } from 'react';
 
 import ChoiceList from './components/ChoiceList';
 import WordList from './components/WordList';
@@ -65,14 +66,15 @@ class GameApp extends Component {
         }
     }
 
+
     render() {
 
         return(
             <div>
                 <Utility />
                 <ScoreCard currentScore={this.state.score} submit_event={this.onSubmit} />
-                {/* <WordList letterList={this.state.word_blank} selection_event={this.onWordSelect} />      
-                <ChoiceList letterList={this.state.choices} selection_event={this.onChoiceSelect} />      */}
+                <WordList letterList={this.state.word_blank} selection_event={this.onWordSelect} />      {/* Pass the selected word's array of letters here */}
+                <ChoiceList letterList={this.state.choices} selection_event={this.onChoiceSelect} />     {/* Pass the custom generated array of choice-letters here */}
             </div>
         );
 

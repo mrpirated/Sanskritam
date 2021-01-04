@@ -13,8 +13,7 @@ router.post(
       min: 8,
       max: 20
     }).withMessage('Password should be 8-20 characters long')
-      .matches(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$.!%*#?&])[A-Za-z\d@$.!%*#?&]{8,20}$/)
-      .withMessage('Password must contain alphabets, numbers and symbols')
+      
   ],
   signup
 );
@@ -36,7 +35,7 @@ router.post("/forget", [
 
 router.put("/forget/:token", [
   check('newPassword').isLength({ min: 8, max: 20 }).withMessage('Password Should Be 8-20 Characters!!')
-    .matches(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$.!%*#?&])[A-Za-z\d@$.!%*#?&]{8,20}$/).withMessage('Password must contain alphabets, numbers & symbols')
+    
 ], userPassReset);
 
 router.get("/signout", signout);

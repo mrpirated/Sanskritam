@@ -8,7 +8,7 @@ const WordCard = (props) => {
         return (
 
             <div className="d-inline container" id="word-container">
-                <button type="button" className="btn btn-light" onClick={()=>{ props.selection_event(props.index) } }> {props.letter} </button>  {/*onClick={cardClick()*/}
+                <button type="button" className="btn btn-info" onClick={()=>{ props.selection_event(props.index) } }> {props.letter} </button>  {/*onClick={cardClick()*/}
             </div>
             
         );
