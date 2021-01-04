@@ -44,13 +44,13 @@ class GameApp extends Component {
                 word = res.data
                 console.log(word)
                 var blank = new Array(word.split.length);
-                var split = word.split;
+                var split =[...word.split];
                 for (let i = 0; i < blank.length; i++) {
                     blank[i] = " ";
                 }
 
                 this.setState({
-                    choices: this.shuffle(split),
+                    choices: split.sort(() => Math.random() - 0.5),
                     word_info: word,
                     word_blank: blank,
                 })
@@ -64,13 +64,13 @@ class GameApp extends Component {
                 word = res.data
                 console.log(word)
                 var blank = new Array(word.split.length);
-                var split = word.split;
+                var split = [...word.split];
                 for (let i = 0; i < blank.length; i++) {
                     blank[i] = " ";
                 }
 
                 this.setState({
-                    choices: this.shuffle(split),
+                    choices: split.sort(() => Math.random() - 0.5),
                     word_info: word,
                     word_blank: blank,
                 })
@@ -84,13 +84,13 @@ class GameApp extends Component {
                 word = res.data
                 console.log(word)
                 var blank = new Array(word.split.length);
-                var split = word.split;
+                var split = [...word.split];
                 for (let i = 0; i < blank.length; i++) {
                     blank[i] = " ";
                 }
 
                 this.setState({
-                    choices: this.shuffle(split),
+                    choices: split.sort(() => Math.random() - 0.5),
                     word_info: word,
                     word_blank: blank,
                 })
@@ -98,15 +98,10 @@ class GameApp extends Component {
             );
     }
     
-    shuffle=(array)=> {
-        for (var i = array.length - 1; i > 0; i--) {
-            var j = Math.floor(Math.random() * (i + 1));
-            var temp = array[i];
-            array[i] = array[j];
-            array[j] = temp;
-        }
-        return array;
-      }
+    // shuffle=(array)=> {
+    //     array.sort(() => Math.random() - 0.5);
+    //     return array;
+    //   }
 
 
 
