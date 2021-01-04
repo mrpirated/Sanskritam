@@ -68,7 +68,7 @@ class GameApp extends Component {
     render() {
 
         return(
-            <div className="game-container" >
+            <div id="game-container" >
                 <Utility />
                 <ScoreCard currentScore={this.state.score} submit_event={this.onSubmit} />
                 <WordList letterList={this.state.word_blank} selection_event={this.onWordSelect} />       
