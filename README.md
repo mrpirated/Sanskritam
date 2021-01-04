@@ -24,6 +24,6 @@ A simple yet intresting method of promoting enthusiasm for the waning language o
 * [Deepesh Manoj Rathi](https://github.com/mrpirated)
 * [Aditya Raju Darji](https://github.com/aditya-darji)
 * [Yashendu Paresh](https://github.com/Spirit-ofJoy)
-* [Ishan ](https://github.com/developer-ishan)
-* [Mohit ](https://github.com/MojoAlpha)
+* [Ishan Gupta](https://github.com/developer-ishan)
+* [Mohit Pandey](https://github.com/MojoAlpha)
    
