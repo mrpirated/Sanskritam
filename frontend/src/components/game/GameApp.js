@@ -7,19 +7,27 @@ import Utility from './components/Utility';
 import { choices_data } from './data/choices_data';
 import { word_data } from './data/word_data';
 import "./styles/GameApp.css"
+import axios from 'axios';
 class GameApp extends Component {
 
     constructor() {
         super()
 
+
+
+
+
+        this.gethardword();
         this.state = {
             //User-related
             score: 8000,
             difficulty: 'easy',
 
+
+
             //Game-related
             word_blank: [' ', ' ', ' '],     //letters to display
-            choices: choices_data,               //choices for display
+            choices: choices_data,            //choices for display
             word_info: word_data[0],      //word gotten from random generator
 
             //UI related
@@ -29,10 +37,87 @@ class GameApp extends Component {
         }
     }
 
+    geteasyword = () => {
+        var word;
+        axios.get("http://localhost:9000/game/getword/easy")
+            .then(res => {
+                word = res.data
+                console.log(word)
+                var blank = new Array(word.split.length);
+                var split = word.split;
+                for (let i = 0; i < blank.length; i++) {
+                    blank[i] = " ";
+                }
+
+                this.setState({
+                    choices: this.shuffle(split),
+                    word_info: word,
+                    word_blank: blank,
+                })
+            }
+            );
+    }
+    getmediumword = () => {
+        var word;
+        axios.get("http://localhost:9000/game/getword/medium")
+            .then(res => {
+                word = res.data
+                console.log(word)
+                var blank = new Array(word.split.length);
+                var split = word.split;
+                for (let i = 0; i < blank.length; i++) {
+                    blank[i] = " ";
+                }
+
+                this.setState({
+                    choices: this.shuffle(split),
+                    word_info: word,
+                    word_blank: blank,
+                })
+            }
+            );
+    }
+    gethardword = () => {
+        var word;
+        axios.get("http://localhost:9000/game/getword/hard")
+            .then(res => {
+                word = res.data
+                console.log(word)
+                var blank = new Array(word.split.length);
+                var split = word.split;
+                for (let i = 0; i < blank.length; i++) {
+                    blank[i] = " ";
+                }
+
+                this.setState({
+                    choices: this.shuffle(split),
+                    word_info: word,
+                    word_blank: blank,
+                })
+            }
+            );
+    }
+    
+    shuffle=(array)=> {
+        for (var i = array.length - 1; i > 0; i--) {
+            var j = Math.floor(Math.random() * (i + 1));
+            var temp = array[i];
+            array[i] = array[j];
+            array[j] = temp;
+        }
+        return array;
+      }
+
+
+
+
+
+
+
     onWordSelect = (modification_index) => {
         //Changes and records the index of blank
-        this.setState({ 
-            active_index: modification_index, 
+        this.setState({
+            active_index: modification_index,
             selection: true
         });
     }
@@ -57,7 +142,7 @@ class GameApp extends Component {
 
     onSubmit = (event) => {
         //Word compared to original answer
-        if(JSON.stringify(this.state.word_blank)===JSON.stringify(this.state.word_info.letters)) {
+        if (JSON.stringify(this.state.word_blank) === JSON.stringify(this.state.word_info.split)) {
             alert("Correct answer");
         }
         else {
@@ -67,12 +152,12 @@ class GameApp extends Component {
 
     render() {
 
-        return(
+        return (
             <div id="game-container" >
                 <Utility />
                 <ScoreCard currentScore={this.state.score} submit_event={this.onSubmit} />
-                <WordList letterList={this.state.word_blank} selection_event={this.onWordSelect} />       
-                <ChoiceList letterList={this.state.choices} selection_event={this.onChoiceSelect} /> 
+                <WordList letterList={this.state.word_blank} selection_event={this.onWordSelect} />
+                <ChoiceList letterList={this.state.choices} selection_event={this.onChoiceSelect} />
             </div>
         );
 
