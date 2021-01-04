@@ -1,1 +1,1 @@
-export const choices_data = ['सं', 'स्कृ', 'त'];
+export const choices_data = ['सं', 'स्कृ', 'त', 'सं', 'स्कृ', 'त', 'सं', 'स्कृ', 'त', 'त'];
