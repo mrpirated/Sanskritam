@@ -6,7 +6,7 @@ import ScoreCard from './components/ScoreCard';
 import Utility from './components/Utility';
 import { choices_data } from './data/choices_data';
 import { word_data } from './data/word_data';
-
+import "./styles/GameApp.css"
 class GameApp extends Component {
 
     constructor() {
@@ -18,9 +18,9 @@ class GameApp extends Component {
             difficulty: 'easy',
 
             //Game-related
-            word_blank: [' ', ' ', ' '],         //letters to display
+            word_blank: [' ', ' ', ' '],     //letters to display
             choices: choices_data,               //choices for display
-            word_info: word_data[0],             //word gotten from random generator
+            word_info: word_data[0],      //word gotten from random generator
 
             //UI related
             selection: false,
@@ -68,7 +68,7 @@ class GameApp extends Component {
     render() {
 
         return(
-            <div className="game-container" >
+            <div id="game-container" >
                 <Utility />
                 <ScoreCard currentScore={this.state.score} submit_event={this.onSubmit} />
                 <WordList letterList={this.state.word_blank} selection_event={this.onWordSelect} />       

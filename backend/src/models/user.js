@@ -31,10 +31,6 @@ var userSchema = new mongoose.Schema(
     tokenExpiry: {
       type: String
     },
-    isVerified: {
-      type: Boolean,
-      default: false
-    },
     points: {
       type: Number,
       default: 0,

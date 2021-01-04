@@ -1,8 +1,24 @@
-require('../config/db')
+require('dotenv').config()
+
 const express = require("express");
 const router = express.Router();
 const WordModel = require("../models/words.js")
 const SentModel = require("../models/sentence.js")
+const mongoose = require('mongoose');
+var uri = process.env.MONGO_URL;
+mongoose.connect("mongodb+srv://dbuser:dbuser@cluster0.o8x9w.mongodb.net/DB?retryWrites=true&w=majority", {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useCreateIndex: true
+})
+.then(() => {
+    console.log("DB CONNECTED!");
+})
+.catch((err) => {
+    console.log("CONNECTION FAILED!");
+    console.log(err);
+})
+
 
 function insertword(){
   var word = new WordModel({
@@ -880,3 +896,4 @@ function insertOtherSentences() {
 
 
 insertword()
+insertOtherWords()
