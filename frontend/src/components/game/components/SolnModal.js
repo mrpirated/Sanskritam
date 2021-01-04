@@ -35,7 +35,8 @@ const SolnModal = (props) => {
                         <h4 className="modal-title">Solution</h4>
                     </div>
                     <div className="modal-body">
-                        <p>{props.body}</p>
+                        <p>{props.body.word}</p>
+                        <p>{props.body.hint}</p>
                     </div>
                     <div className="modal-footer">
                         <button type="button" className="btn btn-dark" data-bs-dismiss="modal" onClick={props.close}>Close</button>
