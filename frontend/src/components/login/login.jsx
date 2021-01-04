@@ -5,7 +5,9 @@ import "./login.scss";
 export default function Login() {
     const containerClassInitial = "container login-container";
     const [containerClass, setContainerClass] = useState(containerClassInitial);
-    const [data,setdata] = useState('');
+    const [email,setEmail] = useState({});
+    const [name,setName] = useState({});
+    const [password,setPassword] = useState({});
     const signUpClick = () => {
         setContainerClass(containerClassInitial + "  right-panel-active");
     }
@@ -17,28 +19,32 @@ export default function Login() {
         e.preventDefault()
         fetch("http://localhost:9000/signin",{
             method: 'POST',
-            body: JSON.stringify({ data }),
+            body: JSON.stringify({ email,password }),
             headers: { 'Content-Type': 'application/json' },
           })
-        .then(response => {
-            console.log(response)
-            response.json()
-            
-        })
+          .then((res) => res.json())
+          .then((result) => {
+            console.log(result)
+           
+          })
+          .catch((err) => console.log('error'))
         
     }
     const signup = e=>{
         e.preventDefault()
         fetch("http://localhost:9000/signup",{
             method: 'POST',
-            body: JSON.stringify({ data }),
+            body: JSON.stringify({name, email ,password }),
             headers: { 'Content-Type': 'application/json' },
           })
-        .then(response => {
-            response.json()
-            console.log(response)
-        })
+          .then((res) => res.json())
+          .then((result) => {
+            console.log(result)
+            
+          })
+          .catch((err) => console.log('error'))
     }
+    
     
 
     return (
@@ -54,11 +60,11 @@ export default function Login() {
                         </div> */}
                         <span className="login-span">or use your email for registration</span>
                         <input type="text" placeholder="Name"
-                        onChange ={e => setdata({ ...data, name: e.target.value })}/>
+                        onChange ={e => setName(e.target.value)}/>
                         <input type="email" placeholder="Email"
-                        onChange ={e => setdata({ ...data, email: e.target.value })}/>
+                        onChange ={e => setEmail(e.target.value)}/>
                         <input type="password" placeholder="Password"
-                        onChange ={e => setdata({ ...data, password: e.target.value })}/>
+                        onChange ={e => setPassword(e.target.value)}/>
                         <button className="login-btns">Sign Up</button>
                     </form>
                 </div>
@@ -71,10 +77,10 @@ export default function Login() {
                             <a href="#" className="social"><i className="fab fa-linkedin-in"></i></a>
                         </div> */}
                         <span className="login-span">or use your account</span>
-                        <input type="email" placeholder="Email" 
-                        onChange ={e => setdata({ ...data, email: e.target.value })}/>
-                        <input type="password" placeholder="Password" 
-                        onChange ={e => setdata({ ...data, password: e.target.value })}/>
+                        <input name = "email" type="email" placeholder="Email" 
+                        onChange ={e => setEmail(e.target.value)}/>
+                        <input name = "password" type="password" placeholder="Password" 
+                        onChange ={e => setPassword(e.target.value)}/>
                         <a className="login-a" href="#">Forgot your password?</a>
                         <button className="login-btns">Sign In</button>
                     </form>
