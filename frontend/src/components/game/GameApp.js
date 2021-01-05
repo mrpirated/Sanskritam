@@ -10,16 +10,15 @@ import { word_data } from './data/word_data';
 import "./styles/GameApp.css"
 import axios from 'axios';
 class GameApp extends Component {
+    
+    constructor(props) {
+        super(props)
+        console.log(props)
 
-    constructor() {
-        super()
-
-
-        this.gethardword();
+        this.getword();
         this.state = {
             //User-related
-            score: 0,
-            difficulty: 'easy',
+            score: props.user.points,
 
             //Game-related
             word_blank: [' ', ' ', ' '],     //letters to display
@@ -31,6 +30,26 @@ class GameApp extends Component {
             active_index: -1,
             showSubmitModal: false
         }
+    }
+    getword = () => {
+        var word;
+        axios.get("http://localhost:9000/game/getword")
+            .then(res => {
+                word = res.data
+                console.log(word)
+                var blank = new Array(word.split.length);
+                var split =[...word.split];
+                for (let i = 0; i < blank.length; i++) {
+                    blank[i] = " ";
+                }
+
+                this.setState({
+                    choices: split.sort(() => Math.random() - 0.5),
+                    word_info: word,
+                    word_blank: blank,
+                })
+            }
+            );
     }
 
     geteasyword = () => {
@@ -131,11 +150,17 @@ class GameApp extends Component {
         //Word compared to original answer
         if(JSON.stringify(this.state.word_blank)===JSON.stringify(this.state.word_info.split)) {
             this.setState({
-                showSubmitModal: true
+                showSubmitModal: true,
+                score: this.state.score + 8
+                
             })
         }
         else {
             alert("Wrong answer");
+            this.setState({
+                score: this.state.score -2
+                
+            })
         }
     }
 
@@ -143,7 +168,9 @@ class GameApp extends Component {
     goNext = () => {
         this.setState({
             showSubmitModal: false
+            
         })
+        this.getword();
     }
 
     render() {

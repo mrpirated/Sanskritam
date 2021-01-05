@@ -1,6 +1,7 @@
 node_modules
 .env
 package-lock.json
+.eslintcache
 *.log
 *.gz
 sanskrit_game
