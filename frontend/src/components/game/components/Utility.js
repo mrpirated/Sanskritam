@@ -23,10 +23,9 @@ const Utility = (props) => {
 
                     <div className="d-inline soln-container">
                         <button type="button" className="btn btn-danger" onClick={() => soln_setIsOpen(true)}>Solution</button>
-                        <SolnModal open={soln_isOpen} body={props.word} close ={() => {soln_setIsOpen(false)} }/> 
+                        <SolnModal open={soln_isOpen} body={props.word} close ={() => {soln_setIsOpen(false)} }/>
                     </div>
                 </div>    
-
 
             </div>
             
