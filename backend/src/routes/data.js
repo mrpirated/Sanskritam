@@ -14,7 +14,6 @@ router.get("/getword", async (req, res) => {
             size = docs.length;
             var index = Math.floor(rand * size);
             word = new WordModel(docs[index]);
-            console.log(word);
             res.json(word)
         })
         .catch(err => status(400).json('Error: ' + err))
@@ -65,7 +64,6 @@ router.get("/getsentence", async (req, res) => {
             size = docs.length;
             var index = Math.floor(rand * size);
             sent = new SentModel(docs[index]);
-            console.log(sent);
             res.json(sent)
         })
         .catch(err => status(400).json('Error: ' + err))

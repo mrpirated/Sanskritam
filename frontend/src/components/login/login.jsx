@@ -1,18 +1,20 @@
 import React, {useState,useEffect} from "react";
-
+import GameApp from '../game/GameApp'
+import { BrowserRouter, Switch, Route,useHistory } from "react-router-dom";
 import "./login.scss";
 
-export default function Login() {
+export default function Login(props) {
     const containerClassInitial = "container login-container";
     const [containerClass, setContainerClass] = useState(containerClassInitial);
     const [email,setEmail] = useState({});
     const [name,setName] = useState({});
     const [password,setPassword] = useState({});
+    const history = useHistory();
     //const [id,setId] = useState({});
     const signUpClick = () => {
         setContainerClass(containerClassInitial + "  right-panel-active");
     }
-    let id = "";
+    let user= "";
     const signInClick = () => {
         setContainerClass(containerClassInitial);
     }
@@ -26,8 +28,10 @@ export default function Login() {
           .then((res) => res.json())
           .then((result) => {
             if(result.success){
-            id = result.user._id;
-            window.location = "/game";
+            //user = result.user;
+            console.log(result.user);
+            props.handlelogin(result.user);
+            history.push("/game")
         }
           })
           .catch((err) => console.log('error'))

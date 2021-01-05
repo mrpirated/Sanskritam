@@ -11,14 +11,14 @@ import "./styles/GameApp.css"
 import axios from 'axios';
 class GameApp extends Component {
     
-    constructor() {
-        super()
-
+    constructor(props) {
+        super(props)
+        console.log(props)
 
         this.getword();
         this.state = {
             //User-related
-            score: 0,
+            score: props.user.points,
 
             //Game-related
             word_blank: [' ', ' ', ' '],     //letters to display
