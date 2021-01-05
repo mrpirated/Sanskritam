@@ -173,9 +173,19 @@ class GameApp extends Component {
         this.getword();
     }
 
+    //Logs-Out
+    logout = () => {
+        console.log("Logout");
+    }
+
     render() {
 
         return (
+            <>
+            <div id="logout-container">
+                    <button type="button" className="btn btn-outline-danger" onClick={ () => this.logout() }>Log-Out</button>
+            </div>
+
             <div id="game-container" >
                 <SubmitModal view={this.state.showSubmitModal} info={this.state.word_info} close={this.goNext}/>
                 <Utility word={this.state.word_info} />
@@ -183,6 +193,7 @@ class GameApp extends Component {
                 <WordList letterList={this.state.word_blank} selection_event={this.onWordSelect} />
                 <ChoiceList letterList={this.state.choices} selection_event={this.onChoiceSelect} />
             </div>
+            </>
         );
 
     }
