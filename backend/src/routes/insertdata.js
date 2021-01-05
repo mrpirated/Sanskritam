@@ -895,5 +895,6 @@ function insertOtherSentences() {
 }
 
 
-insertword()
-insertOtherWords()
+//insertword()
+//insertOtherWords()
+insertOtherSentences();
