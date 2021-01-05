@@ -13,12 +13,16 @@ class GameApp extends Component {
     
     constructor(props) {
         super(props)
-        console.log(props)
-
+        //console.log(props)
+        if(props.loggedin===false){
+            window.location = "/login"
+        }
         this.getword();
         this.state = {
+            user:props.user,
             //User-related
             score: props.user.points,
+            daypoints:props.user.daypoints,
 
             //Game-related
             word_blank: [' ', ' ', ' '],     //letters to display
@@ -36,7 +40,7 @@ class GameApp extends Component {
         axios.get("http://localhost:9000/game/getword")
             .then(res => {
                 word = res.data
-                console.log(word)
+                //console.log(word)
                 var blank = new Array(word.split.length);
                 var split =[...word.split];
                 for (let i = 0; i < blank.length; i++) {
@@ -151,31 +155,49 @@ class GameApp extends Component {
         if(JSON.stringify(this.state.word_blank)===JSON.stringify(this.state.word_info.split)) {
             this.setState({
                 showSubmitModal: true,
-                score: this.state.score + 8
-                
-            })
+                score: this.state.score + 8,
+                daypoints: this.state.daypoints + 8
+            });
+            console.log(this.state);
+            const user = {
+                _id: this.state.user._id,
+                points: this.state.score+8,
+                daypoints: this.state.daypoints+8
+            };
+            console.log(user)
+            axios.post("http://localhost:9000/updatescores",user)
+            .then(res => console.log(res.json()))
+            .catch(err=> console.log(err));
         }
         else {
             alert("Wrong answer");
             this.setState({
-                score: this.state.score -2
-                
+                score: this.state.score -2,
+                daypoints: this.state.daypoints -2
             })
+            const user = {
+                _id: this.props.user._id,
+                points: this.state.score-2,
+                daypoints: this.state.daypoints-2
+            }
+            axios.post("http://localhost:9000/updatescores",user)
+            .then(res => res.json())
+            .catch(err=> console.log(err));
         }
     }
+    
 
     //Goes to next word
     goNext = () => {
         this.setState({
             showSubmitModal: false
-            
         })
         this.getword();
     }
 
     //Logs-Out
     logout = () => {
-        console.log("Logout");
+        window.location = "/login"
     }
 
     render() {

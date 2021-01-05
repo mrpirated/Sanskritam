@@ -15,7 +15,7 @@ const app = express();
 const authRoutes = require("./routes/auth");
 const dataRoutes = require("./routes/data");
 const rankRoutes = require("./routes/leaderboard");
-
+const scoreRoutes = require("./routes/score");
 
 //Middlewares
 app.use(logger('dev'));
@@ -29,6 +29,7 @@ app.use(express.static(path.join(__dirname, '../public')));
 app.use("/", authRoutes);
 app.use("/game", dataRoutes);
 app.use("/leaderboard", rankRoutes);
+app.use("/updatescores",scoreRoutes);
 
 // catch 404 and forward to error handler
 // app.use(function(req, res, next) {
