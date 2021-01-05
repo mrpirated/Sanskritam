@@ -7,7 +7,17 @@ const WordModel = require("../models/words.js")
 const SentModel = require("../models/sentence.js")
 const User = require("../models/user.js")
 
-
+router.get("/getword", async (req, res) => {
+    var rand = Math.random();
+    WordModel.find()
+        .then(docs => {
+            size = docs.length;
+            var index = Math.floor(rand * size);
+            word = new WordModel(docs[index]);
+            res.json(word)
+        })
+        .catch(err => status(400).json('Error: ' + err))
+})
 
 router.get("/getword/easy", async (req, res) => {
     var rand = Math.random();
@@ -24,7 +34,7 @@ router.get("/getword/easy", async (req, res) => {
 
 router.get("/getword/medium", async (req, res) => {
     var rand = Math.random();
-    WordModel.find({ "split.4": { "$exists": false } } && { "split.2": { "$exists": true } })
+    WordModel.find({ "split.3": { "$exists": false } } && { "split.2": { "$exists": true } })
         .then(docs => {
             size = docs.length;
             var index = Math.floor(rand * size);
@@ -37,13 +47,24 @@ router.get("/getword/medium", async (req, res) => {
 
 router.get("/getword/hard", async (req, res) => {
     var rand = Math.random();
-    WordModel.find({ "split.4": { "$exists": true } })
+    WordModel.find({ "split.3": { "$exists": true } })
         .then(docs => {
             size = docs.length;
             var index = Math.floor(rand * size);
             word = new WordModel(docs[index]);
             console.log(word);
             res.json(word)
+        })
+        .catch(err => status(400).json('Error: ' + err))
+})
+router.get("/getsentence", async (req, res) => {
+    var rand = Math.random();
+    SentModel.find({})
+        .then(docs => {
+            size = docs.length;
+            var index = Math.floor(rand * size);
+            sent = new SentModel(docs[index]);
+            res.json(sent)
         })
         .catch(err => status(400).json('Error: ' + err))
 })

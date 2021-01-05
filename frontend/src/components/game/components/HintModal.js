@@ -33,10 +33,12 @@ const HintModal = (props) => {
                 <div style={MODAL_STYLE}>
                     <div className="modal-header">
                         <h5 className="modal-title">Hint</h5>
-                        <button type="button" className="btn-close" aria-label="Close" onClick={props.close}>X</button>
                     </div>
                     <div className="modal-body">
                         <p>{props.body}</p>
+                    </div>
+                    <div className="modal-footer">
+                        <button type="button" className="btn btn-dark" data-bs-dismiss="modal" onClick={props.close}>Close</button>
                     </div>
                 </div>
             </>,

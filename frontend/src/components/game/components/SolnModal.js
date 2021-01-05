@@ -33,10 +33,13 @@ const SolnModal = (props) => {
                 <div style={MODAL_STYLE}>
                     <div className="modal-header">
                         <h4 className="modal-title">Solution</h4>
-                        <button className="btn-close" aria-label="Close" onClick={props.close}><h8>X</h8></button>
                     </div>
                     <div className="modal-body">
-                        <p>{props.body}</p>
+                        <p>{props.body.word}</p>
+                        <p>{props.body.hint}</p>
+                    </div>
+                    <div className="modal-footer">
+                        <button type="button" className="btn btn-dark" data-bs-dismiss="modal" onClick={props.close}>Close</button>
                     </div>
                 </div>
             </>,
