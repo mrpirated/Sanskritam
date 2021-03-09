@@ -1,5 +1,5 @@
 # Sanskritam
-A simple yet intresting method of promoting enthusiasm for the waning language of Sanskrit. Made for the Productathon(2020) organized by IIT Roorkee. A Hangman-esque game using Sanskrit.
+A simple yet interesting method to promote enthusiasm for the waning language of Sanskrit. Made for the Productathon(2020) organized by IIT Roorkee. A Hangman-esque game using Sanskrit as the base language.
 
 ## Features:
 
